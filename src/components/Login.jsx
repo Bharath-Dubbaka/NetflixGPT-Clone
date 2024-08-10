@@ -4,6 +4,11 @@ import Header from "./Header";
 import { useParams } from "react-router-dom";
 import { checkValidation } from "../utils/validations";
 import { useRef } from "react";
+import {
+   createUserWithEmailAndPassword,
+   signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../utils/firebase";
 
 const Login = () => {
    const [isSignIn, setIsSignIn] = useState(true);
@@ -12,7 +17,6 @@ const Login = () => {
 
    const toggleClick = () => {
       setIsSignIn(!isSignIn);
-      console.log(idP);
    };
 
    //  using useRef to extract value from inputs rather than conventional state variables
@@ -24,7 +28,39 @@ const Login = () => {
       let pass = passwordRef.current.value;
       const responseValid = checkValidation(mail, pass);
       setErrValidation(responseValid);
-      // console.log(responseValid, "responseValid");
+
+      // null means the validation has passed and no err string to return/ if not just return
+      if (responseValid) return;
+      // Not signIn means signUP
+      if (!isSignIn) {
+         createUserWithEmailAndPassword(auth, mail, pass)
+            .then((userCredential) => {
+               // SignUP
+               const user = userCredential.user;
+               console.log(user, "user from signUP");
+               // ...
+            })
+            .catch((error) => {
+               const errorCode = error.code;
+               const errorMessage = error.message;
+               console.log(errorMessage, "errorMessage");
+               // ..
+            });
+      } else {
+         //signIn logic
+         signInWithEmailAndPassword(auth, mail, pass)
+            .then((userCredential) => {
+               // Signed in
+               const user = userCredential.user;
+               console.log(user, "user from signIN")
+               // ...
+            })
+            .catch((error) => {
+               const errorCode = error.code;
+               const errorMessage = error.message;
+               console.log(errorMessage)
+            });
+      }
    };
 
    return (
@@ -64,7 +100,9 @@ const Login = () => {
                ref={passwordRef}
             />
             {errValidation ? (
-               <p className="text-lg text-red-500 p-1 m-2">{errValidation}</p>
+               <p className="text-lg text-red-500 p-1 m-1 font-bold">
+                  {errValidation}
+               </p>
             ) : null}
             <button
                className="font-semibold p-2 m-2 my-3 rounded-md text-white bg-red-600 hover:bg-red-500 active:bg-red-700 focus:outline-none focus:ring focus:ring-gray-500"
