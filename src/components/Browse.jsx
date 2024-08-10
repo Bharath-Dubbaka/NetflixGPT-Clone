@@ -1,9 +1,10 @@
-import React from 'react'
+import React from "react";
+import { useParams } from "react-router-dom";
 
 const Browse = () => {
-  return (
-    <div>Browse</div>
-  )
-}
+   //  const { id } = useParams();
+   //  console.log(id);
+   return <div>Browse</div>;
+};
 
-export default Browse
+export default Browse;
