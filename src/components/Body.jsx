@@ -4,18 +4,18 @@ import Browse from "./Browse";
 import Header from "./Header";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
-const appRouter = createBrowserRouter([
-   {
-      path: "/login",
-      element: <Login />,
-   },
-   {
-      path: "/browse",
-      element: <Browse />,
-   },
-]);
-
 const Body = () => {
+   const appRouter = createBrowserRouter([
+      {
+         path: "/",
+         element: <Login />,
+      },
+      {
+         path: "/browse",
+         element: <Browse />,
+      },
+   ]);
+
    return (
       <div>
          <RouterProvider router={appRouter} />
