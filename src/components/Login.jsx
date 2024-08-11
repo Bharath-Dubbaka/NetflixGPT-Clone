@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { bgImgLogin } from "../utils/constants";
+import { bgImgLogin, defaultIconAvatar } from "../utils/constants";
 import Header from "./Header";
 import { useParams } from "react-router-dom";
 import { checkValidation } from "../utils/validations";
@@ -12,13 +12,11 @@ import {
 import { auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/store/userSlice";
-import { useNavigate } from "react-router-dom";
 
 const Login = () => {
    const [isSignIn, setIsSignIn] = useState(true);
    const [errValidation, setErrValidation] = useState(null);
    //  const idP = useParams();
-   const navigate = useNavigate();
    const dispatch = useDispatch();
 
    const toggleClick = () => {
@@ -48,20 +46,17 @@ const Login = () => {
                // // AFTER SIGNUP THEN UPDATE PROFILE DETAILS
                updateProfile(auth.currentUser, {
                   displayName: nameRef.current.value,
-                  photoURL:
-                     "https://cdn3.iconfinder.com/data/icons/feather-5/24/user-minus-256.png",
+                  photoURL: defaultIconAvatar,
                })
                   .then(() => {
                      // // Profile updated
-
+                     // // const {displayName, photoURL} = auth.currentUser
                      dispatch(
                         addUser({
-                          
                            displayName: user.displayName,
                            photoURL: user.photoURL,
                         })
                      );
-                     navigate("/browse");
                   })
                   .catch((error) => {
                      setErrValidation(error.message);
@@ -69,7 +64,6 @@ const Login = () => {
             })
             .catch((error) => {
                const errorCode = error.code;
-               const errorMessage = error.message;
                console.log(error.message, error.code, "from signUP");
                setErrValidation("Please enter valid credentials" + errorCode);
                // ..
@@ -81,9 +75,6 @@ const Login = () => {
                // Signed in
                const user = userCredential.user;
                console.log(user, "user from signIN");
-               navigate("/browse");
-
-               // ...
             })
             .catch((error) => {
                const errorCode = error.code;
