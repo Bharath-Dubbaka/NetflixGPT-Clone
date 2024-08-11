@@ -7,43 +7,71 @@ import { useRef } from "react";
 import {
    createUserWithEmailAndPassword,
    signInWithEmailAndPassword,
+   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/store/userSlice";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
    const [isSignIn, setIsSignIn] = useState(true);
    const [errValidation, setErrValidation] = useState(null);
    //  const idP = useParams();
+   const navigate = useNavigate();
+   const dispatch = useDispatch();
 
    const toggleClick = () => {
       setIsSignIn(!isSignIn);
    };
 
    //  using useRef to extract value from inputs rather than conventional state variables
+   const nameRef = useRef(null);
    const emailRef = useRef(null);
    const passwordRef = useRef(null);
 
    const handleSubmit = (e) => {
       let mail = emailRef.current.value;
       let pass = passwordRef.current.value;
+
       const responseValid = checkValidation(mail, pass);
       setErrValidation(responseValid);
 
-      // null means the validation has passed and no err string to return/ if not just return
+      // //null means the validation has passed and no err string to return/ if not just return
       if (responseValid) return;
-      // Not signIn means signUP
+      // // Not signIn means signUP
       if (!isSignIn) {
          createUserWithEmailAndPassword(auth, mail, pass)
             .then((userCredential) => {
-               // SignUP
+               // // SignUP
                const user = userCredential.user;
-               console.log(user, "user from signUP");
-               // ...
+               // // AFTER SIGNUP THEN UPDATE PROFILE DETAILS
+               updateProfile(auth.currentUser, {
+                  displayName: nameRef.current.value,
+                  photoURL:
+                     "https://cdn3.iconfinder.com/data/icons/feather-5/24/user-minus-256.png",
+               })
+                  .then(() => {
+                     // // Profile updated
+
+                     dispatch(
+                        addUser({
+                          
+                           displayName: user.displayName,
+                           photoURL: user.photoURL,
+                        })
+                     );
+                     navigate("/browse");
+                  })
+                  .catch((error) => {
+                     setErrValidation(error.message);
+                  });
             })
             .catch((error) => {
                const errorCode = error.code;
                const errorMessage = error.message;
-               console.log(errorMessage, "errorMessage");
+               console.log(error.message, error.code, "from signUP");
+               setErrValidation("Please enter valid credentials" + errorCode);
                // ..
             });
       } else {
@@ -52,13 +80,16 @@ const Login = () => {
             .then((userCredential) => {
                // Signed in
                const user = userCredential.user;
-               console.log(user, "user from signIN")
+               console.log(user, "user from signIN");
+               navigate("/browse");
+
                // ...
             })
             .catch((error) => {
                const errorCode = error.code;
                const errorMessage = error.message;
-               console.log(errorMessage)
+               console.log(error.message, error.code, "from signIN");
+               setErrValidation("Please enter valid credentials" + errorCode);
             });
       }
    };
@@ -90,6 +121,7 @@ const Login = () => {
                <input
                   type="text"
                   placeholder="Full Name"
+                  ref={nameRef}
                   className="p-2 m-2 h-12 rounded-md bg-black border border-slate-500"
                />
             )}
