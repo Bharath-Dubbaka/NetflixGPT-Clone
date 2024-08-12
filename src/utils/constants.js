@@ -6,3 +6,11 @@ export const bgImgLogin =
 
 export const defaultIconAvatar =
    "https://cdn0.iconfinder.com/data/icons/mobile-basic-vol-1/32/Profile-512.png";
+
+export const MOVIE_OPTIONS = {
+   method: 'GET',
+   headers: {
+     accept: 'application/json',
+     Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkY2E3ZTQ0NDlhZWM1MTA5YWM1NzE1Mjk4MTQ3NzhhMyIsIm5iZiI6MTcyMzQ1NDk0NS45MjczMSwic3ViIjoiNjZiOTJiZjVmNTM2ZjI5MjUyZjZmMGZjIiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.nYkbwcPqUdTyXT2PN7K0_PYSY2BQWQnhyUVdF8s7W-g'
+   }
+ };

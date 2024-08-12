@@ -14,7 +14,7 @@ const Header = () => {
    const userDetails = useSelector((store) => store?.user);
 
    useEffect(() => {
-      onAuthStateChanged(auth, (user) => {
+      const unSubscribe = onAuthStateChanged(auth, (user) => {
          if (user) {
             // User is signed in, see docs for a list of available properties
             // https://firebase.google.com/docs/reference/js/auth.user
@@ -35,17 +35,22 @@ const Header = () => {
             navigate("/");
          }
       });
+
+      //cleaning/unSubscribe to the onAuthStateChanged when compo unMounts
+      return () => unSubscribe();
    }, []);
 
    const handleSignOut = () => {
       console.log("clicked");
       signOut(auth)
          .then(() => {
-            // Sign-out successful.
-            navigate("/");
+            // Sign-out successful, don't have to navigate again as the onAuthStateChanged
+            //is already listening to all auth calls whenever the headerCompo is rendered
+            // navigate("/");
          })
          .catch((error) => {
             // An error happened.
+            navigate("/error");
          });
    };
    return (
