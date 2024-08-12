@@ -11,26 +11,16 @@ const HeroVideoBackground = ({ id }) => {
          MOVIE_OPTIONS
       );
       const json = await data.json();
-      // console.log(json, "HERO VIDEO JSON");
-      const trailer = json.results.filter((vids) => vids?.type == "Trailer");
-      // console.log(trailer, "trailertrailertrailer");
-      const firstLink = trailer.length >= 0 ? trailer[0] : json?.results[0];
-      // console.log(firstLink, "firstLink");
+      const trailers = json.results.filter((vids) => vids?.type == "Trailer");
+      const firstLink = trailers.length >= 0 ? trailers[0] : json?.results[0];
       setVidLink(firstLink?.key);
    };
-
    useEffect(() => {
       heroMovieVideo();
    }, []);
    return (
       <div>
-         <div
-         // onClick={() => {
-         //    <Link
-         //       to={`https://www.youtube.com/watch?v=${trailer[0].key}`}
-         //    ></Link>;
-         // }}
-         >
+         <div>
             <button
                onClick={() => {
                   console.log(`https://www.youtube.com/watch?v=${vidLink}`);
@@ -38,10 +28,6 @@ const HeroVideoBackground = ({ id }) => {
             >
                HeroTrailer
             </button>
-            {/* {console.log(
-               `https://www.youtube.com/watch?v=${firstLink.key}`,
-               "`https://www.youtube.com/watch?v=${firstLink.key}`"
-            )} */}
          </div>
       </div>
    );
