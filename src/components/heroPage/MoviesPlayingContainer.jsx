@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import HeroVideoTitle from "./HeroVideoTitle";
+import HeroVideoBackground from "./HeroVideoBackground";
 
 const MoviesPlayingContainer = () => {
    const movieNowPlayingList = useSelector(
@@ -10,7 +11,7 @@ const MoviesPlayingContainer = () => {
    if (!movieNowPlayingList) return;
    const heroMovie = movieNowPlayingList[0];
    //    console.log(heroMovie, "heroMovieheroMovie");
-   const { original_title, overview, vote_count, vote_average } = heroMovie;
+   const { original_title, overview, vote_count, vote_average, id } = heroMovie;
    return (
       <>
          {/* {movieNowPlayingList
@@ -25,6 +26,7 @@ const MoviesPlayingContainer = () => {
             vote_count={vote_count}
             vote_average={vote_average}
          />
+         <HeroVideoBackground id={id}/>
       </>
    );
 };

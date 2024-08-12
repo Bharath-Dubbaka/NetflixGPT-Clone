@@ -9,7 +9,7 @@ const useNowPlaying = () => {
    const movieNowPlayingList = useSelector(
       (store) => store?.movies?.nowPlayingMovies
    );
-   console.log(movieNowPlayingList, "movieNowPlayingList");
+   // console.log(movieNowPlayingList, "movieNowPlayingList");
    //  const { id } = useParams();
    //  console.log(id);
    const getNowPlayingMovies = async () => {
