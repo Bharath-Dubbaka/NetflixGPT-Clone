@@ -1,25 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { MOVIE_OPTIONS } from "../../utils/constants";
+import useHeroMovieTrailer from "../../hooks/useHeroMovieTrailer";
+import { useSelector } from "react-redux";
 
 const HeroVideoBackground = ({ id }) => {
-   const [vidLink, setVidLink] = useState(null);
-   const heroMovieVideo = async () => {
-      const data = await fetch(
-         `https://api.themoviedb.org/3/movie/
-            ${id}
-            /videos?language=en-US`,
-         MOVIE_OPTIONS
-      );
-      const json = await data.json();
-      const trailers = json.results.filter((vids) => vids?.type == "Trailer");
-      const firstLink = trailers.length >= 0 ? trailers[0] : json?.results[0];
-      setVidLink(firstLink?.key);
-   };
-   useEffect(() => {
-      heroMovieVideo();
-   }, []);
+   useHeroMovieTrailer(id);
+   const trailerKey = useSelector((state) => state?.movies?.heroMovieTrailer);
+   console.log(trailerKey);
+
    return (
       <div>
+         <div className="w-screen">
+            <iframe
+               src={`https://www.youtube.com/embed/${trailerKey}?autoplay=1&mute=1`}
+               title="Deadpool &amp; Wolverine | Final Trailer | In Theaters July 26"
+               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+               referrerPolicy="strict-origin-when-cross-origin"
+            ></iframe>
+
+            {/* <iframe
+               className="w-screen h-full"
+               src={`https://www.youtube.com/embed/${vidLink}?autoplay=1&mute=1`}
+               title="YouTube video player"
+               frameBorder="0"
+               sandbox="allow-same-origin allow-forms allow-popups allow-scripts allow-presentation"
+               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+               allowFullScreen
+            ></iframe> */}
+         </div>
          <div>
             <button
                onClick={() => {
