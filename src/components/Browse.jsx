@@ -7,11 +7,15 @@ import { useSelector } from "react-redux";
 import useNowPlaying from "../hooks/useNowPlaying";
 import MoviesPlayingContainer from "./heroPage/MoviesPlayingContainer";
 import MoviesCategoryContainer from "./heroPage/MoviesCategoryContainer";
+import usePopularMovies from "../hooks/usePopularMovies";
+import useTopRatedMovies from "../hooks/useTopRatedMovies";
+import useUpcomingMovies from "../hooks/useUpcomingMovies";
 
 const Browse = () => {
-   //   const dispatch = useDispatch();
-
    useNowPlaying();
+   usePopularMovies();
+   useTopRatedMovies();
+   useUpcomingMovies();
    return (
       <>
          <Header />
