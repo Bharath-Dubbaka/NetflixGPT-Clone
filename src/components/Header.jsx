@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { onAuthStateChanged } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { addUser, removeUser } from "../utils/store/userSlice";
+import { toggleGPTSearch } from "../utils/store/gptSlice";
 
 const Header = () => {
    const navigate = useNavigate();
@@ -53,6 +54,11 @@ const Header = () => {
             navigate("/error");
          });
    };
+
+   const toggleGPT = () => {
+      dispatch(toggleGPTSearch());
+   };
+
    return (
       <div className="absolute z-10 py-6 pb-10 px-16 bg-gradient-to-b from-black min-w-full flex justify-between">
          <div>
@@ -70,6 +76,14 @@ const Header = () => {
                </div>
                <div className="text-white p-1 mx-2 hover:text-slate-400 font-bold">
                   Hi, {userDetails?.displayName}
+               </div>
+               <div>
+                  <button
+                     className="text-white font-bold p-1 px-2 mr-4 bg-slate-600 rounded-md hover:bg-slate-800"
+                     onClick={toggleGPT}
+                  >
+                     GPTsearch
+                  </button>
                </div>
                <div>
                   <button
