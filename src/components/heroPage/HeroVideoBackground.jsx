@@ -9,34 +9,14 @@ const HeroVideoBackground = ({ id }) => {
    console.log(trailerKey);
 
    return (
-      <div>
-         <div className="w-screen">
-            <iframe
-               src={`https://www.youtube.com/embed/${trailerKey}?autoplay=1&mute=1`}
-               title="Deadpool &amp; Wolverine | Final Trailer | In Theaters July 26"
-               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-               referrerPolicy="strict-origin-when-cross-origin"
-            ></iframe>
-
-            {/* <iframe
-               className="w-screen h-full"
-               src={`https://www.youtube.com/embed/${vidLink}?autoplay=1&mute=1`}
-               title="YouTube video player"
-               frameBorder="0"
-               sandbox="allow-same-origin allow-forms allow-popups allow-scripts allow-presentation"
-               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-               allowFullScreen
-            ></iframe> */}
-         </div>
-         <div>
-            <button
-               onClick={() => {
-                  console.log(`https://www.youtube.com/watch?v=${vidLink}`);
-               }}
-            >
-               HeroTrailer
-            </button>
-         </div>
+      <div className="w-screen">
+         <iframe
+            className="w-screen aspect-video h-[90vh] "
+            src={`https://www.youtube.com/embed/${trailerKey}?autoplay=1&mute=1&loop=1&playlist=${trailerKey}&modestbranding=1&autohide=1&showinfo=0&controls=0`}
+            title="Deadpool &amp; Wolverine | Final Trailer | In Theaters July 26"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+         ></iframe>
       </div>
    );
 };
