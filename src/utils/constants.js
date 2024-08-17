@@ -11,9 +11,10 @@ export const MOVIE_OPTIONS = {
    method: "GET",
    headers: {
       accept: "application/json",
-      Authorization:
-         "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkY2E3ZTQ0NDlhZWM1MTA5YWM1NzE1Mjk4MTQ3NzhhMyIsIm5iZiI6MTcyMzQ1NDk0NS45MjczMSwic3ViIjoiNjZiOTJiZjVmNTM2ZjI5MjUyZjZmMGZjIiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.nYkbwcPqUdTyXT2PN7K0_PYSY2BQWQnhyUVdF8s7W-g",
+      Authorization: "Bearer " + import.meta.env.VITE_REACT_APP_TMDB_KEY,
    },
 };
 
 export const IMG_CDN = "https://image.tmdb.org/t/p/w500/";
+
+export const OPEN_AI_KEY = import.meta.env.VITE_REACT_APP_OPEN_AI_KEY;

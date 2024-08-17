@@ -7,7 +7,7 @@ const MoviesCategoryContainer = () => {
    // console.log(nowPlayingList, "nowPlayingListnowPlayingList");
    return (
       <div className=" bg-black">
-         <div className="-mt-52 relative z-10 pl-8">
+         <div className="-mt-[23%] relative z-10 pl-8 pb-8">
             <MovieList title="Now Playing" movies={movies?.nowPlayingMovies} />
             <MovieList title="Popular Movies" movies={movies?.popularMovies} />
             <MovieList title="Top Rated" movies={movies?.topRatedMovies} />

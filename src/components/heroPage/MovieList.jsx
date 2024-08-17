@@ -2,8 +2,10 @@ import React from "react";
 import MovieCard from "./MovieCard";
 
 const MovieList = ({ title, movies }) => {
-   console.log(movies, "moviesh");
+   // console.log(movies, "moviesh");
 
+   // //   add shimer later
+   // if(!movies) return
    return (
       <div className=" px-6">
          <div className="text-white text-3xl font-semibold py-4">{title}</div>

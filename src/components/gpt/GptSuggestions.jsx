@@ -1,9 +1,21 @@
 import React from "react";
-
+import { useSelector } from "react-redux";
+import MovieList from "../heroPage/MovieList";
 const GptSuggestions = () => {
+   const { moviesNames, moviesResults } = useSelector((store) => store?.gpt);
+   console.log(moviesResults);
+
+   // add shimer later
+   if (!moviesNames) return;
    return (
-      <div className=" text-white font-bold bg-black px-10 py-4 rounded-lg w-[40%] flex flex-col text-center">
-         GptSuggestions
+      <div className=" text-white font-bold px-14 py-4 rounded-lg w-full flex flex-col ">
+         {moviesNames.map((movie, index) => (
+            <MovieList
+               key={movie}
+               title={movie}
+               movies={moviesResults[index]?.results}
+            />
+         ))}
       </div>
    );
 };
