@@ -7,8 +7,8 @@ const HeroVideoTitle = ({
    vote_average,
 }) => {
    return (
-      <div className=" pt-48 pl-8 absolute text-white bg-gradient-to-r from-black h-[100vh] w-[40%] ">
-         <div className="py-2 ml-8 font-extrabold text-4xl">
+      <div className="pt-[14%] pl-8 absolute text-white bg-gradient-to-r from-black h-[100vh] w-[40%] hidden sm:hidden md:flex flex-col">
+         <div className="py-2 ml-8 font-extrabold sm:text-2xl md:text-4xl">
             {original_title}
          </div>
          <div className="py-2 ml-8 ">{overview}</div>

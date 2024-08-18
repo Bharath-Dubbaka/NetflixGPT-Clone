@@ -14,7 +14,7 @@ import { useDispatch } from "react-redux";
 import { addUser } from "../utils/store/userSlice";
 
 const Login = () => {
-   const [isSignIn, setIsSignIn] = useState(true);
+   const [isSignIn, setIsSignIn] = useState(false);
    const [errValidation, setErrValidation] = useState(null);
    //  const idP = useParams();
    const dispatch = useDispatch();
@@ -91,13 +91,13 @@ const Login = () => {
          <div className=" absolute bg-gradient-to-b from-black w-[100%]">
             <img
                src={bgImgLogin}
-               className=" w-[100%] min-h-[95vh] max-h-[100vh]"
+               className=" w-[100%] object-cover min-h-screen"
                alt="bgImgLogin"
             />
          </div>
          <form
             onSubmit={(e) => e.preventDefault()}
-            className="bg-opacity-75 absolute flex flex-col w-[50%] bg-black rounded-lg p-10 my-20 mx-auto right-0 left-0	"
+            className="w-[90%] bg-opacity-75 absolute flex flex-col bg-black rounded-lg p-10 my-20 mx-auto right-0 left-0 sm:w-[50%] md:w-[50%]	"
          >
             <div className="text-white mb-3 font-bold	text-3xl">
                {isSignIn ? "Sign In" : "Sign Up"}
@@ -133,10 +133,10 @@ const Login = () => {
             >
                {isSignIn ? "Sign In" : "Sign Up"}
             </button>
-            <div className="p-1 m-1">
+            {/* <div className="p-1 m-1">
                <input type="checkbox" name="rememberMe" id="rememberMe" />{" "}
                Remember Me
-            </div>
+            </div> */}
             <div className="p-1 m-1 font-semibold text-gray-400">
                {isSignIn ? "New to Netflix?" : "Already a customer ?"}
                <span className="font-bold text-white" onClick={toggleClick}>

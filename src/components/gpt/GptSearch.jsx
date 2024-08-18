@@ -27,6 +27,7 @@ const GptSearch = () => {
    };
 
    const handleSearchTxt = (e) => {
+      e.preventDefault();
       console.log("clicked", inputRef.current.value);
       // USING GEMINI AI
       async function run() {
@@ -57,21 +58,24 @@ const GptSearch = () => {
    };
 
    return (
-      <div className="	bg-slate-800 px-10 py-4 mb-4 rounded-lg w-[40%] flex justify-center ">
-         <form onSubmit={(e) => e.preventDefault()}>
-            <input
-               ref={inputRef}
-               type="text"
-               placeholder="What would you like to watch today..."
-               className="w-80 h-10 rounded-lg my-2 mr-2 pl-2 text-lg"
-            />
-            <button
-               className="bg-red-600 h-10 px-4 rounded-lg font-bold text-white"
-               onClick={handleSearchTxt}
-            >
-               Search
-            </button>
-         </form>
+      <div className="	bg-slate-800 py-4 rounded-lg  flex justify-center w-[90%] sm:w-[65%] md:w-[65%]">
+         {/* <form
+            onSubmit={(e) => e.preventDefault()}
+            className=" "
+         > */}
+         <input
+            ref={inputRef}
+            type="text"
+            placeholder="What would you like to watch today..."
+            className="w-[60%] h-10 rounded-lg my-2 mr-2 pl-2 text-lg"
+         />
+         <button
+            className="bg-red-600 h-10 rounded-lg font-bold text-white w-[25%] mt-2"
+            onClick={handleSearchTxt}
+         >
+            Search
+         </button>
+         {/* </form> */}
       </div>
    );
 };

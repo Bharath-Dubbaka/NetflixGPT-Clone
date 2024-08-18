@@ -60,29 +60,33 @@ const Header = () => {
    };
 
    return (
-      <div className="absolute z-10 py-6 pb-10 px-16 bg-gradient-to-b from-black min-w-full flex justify-between">
-         <div>
-            <img src={appLogo} alt="appLogo" />
-         </div>
-
-         {userDetails ? (
-            <div className="flex">
-               <div>
+      <div className="absolute z-10 py-6 pb-10  bg-gradient-to-b from-black w-[100%] flex flex-col justify-between sm:flex-row md:flex-row">
+         <div className="flex justify-between pr-10 min-w-[85%] sm:min-w-[65%] md:min-w-[75%] sm:pr-0 md:pr-0">
+            <div>
+               <img src={appLogo} alt="appLogo" className="pl-8" />
+            </div>
+            {userDetails ? (
+               <div className="flex items-center">
                   <img
                      className="h-8"
                      src={userDetails?.photoURL}
                      alt="userPhotoURL"
                   />
+                  <div className="text-white p-1 hover:text-slate-400 font-bold">
+                     Hi, {userDetails?.displayName}
+                  </div>
                </div>
-               <div className="text-white p-1 mx-2 hover:text-slate-400 font-bold">
-                  Hi, {userDetails?.displayName}
-               </div>
+            ) : null}
+         </div>
+
+         {userDetails ? (
+            <div className="flex pr-4 pt-4  min-w-[15%] sm:min-w-[35%] md:min-w-[25%] items-center justify-center sm:justify-start sm:pt-0 md:justify-start md:pt-0">
                <div>
                   <button
                      className="text-white font-bold p-1 px-2 mr-4 bg-slate-600 rounded-md hover:bg-slate-800"
                      onClick={toggleGPT}
                   >
-                     GPTsearch
+                     GPT
                   </button>
                </div>
                <div>
