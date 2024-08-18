@@ -1,9 +1,10 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { MOVIE_OPTIONS } from "../utils/constants";
 import { addHeroMovieTrailer } from "../utils/store/moviesSlice";
 
 const useHeroMovieTrailer = (id) => {
+   const heroTrailerStore = useSelector((store) => store?.movies?.heroMovieTrailer);
    const dispatch = useDispatch();
    const heroMovieVideo = async () => {
       const data = await fetch(
@@ -19,7 +20,7 @@ const useHeroMovieTrailer = (id) => {
       dispatch(addHeroMovieTrailer(firstLink?.key));
    };
    useEffect(() => {
-      heroMovieVideo();
+      !heroTrailerStore ? heroMovieVideo() : null;
    }, []);
 };
 
