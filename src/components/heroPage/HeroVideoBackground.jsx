@@ -9,9 +9,9 @@ const HeroVideoBackground = ({ id }) => {
    console.log(trailerKey);
 
    return (
-      <div className="w-[100%] overflow-hidden ">
+      <div className="bg_utube w-full h-full overflow-hidden">
          <iframe
-            className="w-screen aspect-video pointer-events-none -mt-12 h-[90vh] sm:h-[100vh] md:h-[120vh]"
+            className="w-full aspect-video overflow-hidden"
             src={`https://www.youtube.com/embed/${trailerKey}?autoplay=1&mute=1&loop=1&playlist=${trailerKey}&modestbranding=1&autohide=1&showinfo=0&controls=0&rel=0`}
             // title="Deadpool &amp; Wolverine | Final Trailer | In Theaters July 26"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; hardware=0; acceleration=0"

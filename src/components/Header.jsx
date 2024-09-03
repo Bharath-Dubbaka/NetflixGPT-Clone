@@ -60,27 +60,25 @@ const Header = () => {
    };
 
    return (
-      <div className="absolute z-10 py-6 pb-10  bg-gradient-to-b from-black w-[100%] flex flex-col justify-between sm:flex-row md:flex-row">
-         <div className="flex justify-between pr-10 min-w-[85%] sm:min-w-[65%] md:min-w-[75%] sm:pr-0 md:pr-0">
-            <div>
-               <img src={appLogo} alt="appLogo" className="pl-8" />
-            </div>
-            {userDetails ? (
-               <div className="flex items-center">
-                  <img
-                     className="h-8"
-                     src={userDetails?.photoURL}
-                     alt="userPhotoURL"
-                  />
-                  <div className="text-white p-1 hover:text-slate-400 font-bold">
-                     Hi, {userDetails?.displayName}
-                  </div>
-               </div>
-            ) : null}
+      <div className="absolute z-50 py-2 sm:py-4 md:py-6 pb-10  bg-gradient-to-b from-black w-[100%] flex justify-between sm:flex-row md:flex-row">
+         <div className="flex justify-between min-w-[20%] sm:min-w-[55%] md:min-w-[55%] sm:pr-0 md:pr-0">
+            <img src={appLogo} alt="appLogo" className="pl-8" />
          </div>
 
          {userDetails ? (
-            <div className="flex pr-4 pt-4  min-w-[15%] sm:min-w-[35%] md:min-w-[25%] items-center justify-center sm:justify-start sm:pt-0 md:justify-start md:pt-0">
+            <div className="flex pr-4 pt-2 min-w-[75%] sm:min-w-[45%] md:min-w-[25%] items-center justify-end sm:justify-end sm:pt-0 md:justify-end md:pt-0">
+               {userDetails ? (
+                  <div className="pr-2 items-center hidden sm:flex md:flex">
+                     <img
+                        className="h-8"
+                        src={userDetails?.photoURL}
+                        alt="userPhotoURL"
+                     />
+                     <div className="text-white p-1 hover:text-slate-400 font-bold ">
+                        Hi, {userDetails?.displayName}
+                     </div>
+                  </div>
+               ) : null}
                <div>
                   <button
                      className="text-white font-bold p-1 px-2 mr-4 bg-slate-600 rounded-md hover:bg-slate-800"

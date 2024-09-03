@@ -17,7 +17,7 @@ const Browse = () => {
    useTopRatedMovies();
    useUpcomingMovies();
    return (
-      <>
+      <div className="bg-black">
          <Header />
          {toggledGptState ? (
             <GptBody />
@@ -27,7 +27,7 @@ const Browse = () => {
                <MoviesCategoryContainer />
             </div>
          )}
-      </>
+      </div>
    );
 };
 

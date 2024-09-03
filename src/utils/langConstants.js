@@ -1,0 +1,55 @@
+const lang = {
+   en: {
+      search: "Search",
+      placeholder: "What would you like to search today",
+      login: {
+         name: "Full Name",
+         email: "Email Address",
+         password: "Password",
+         signUp: "Sign Up",
+         signIn: "Sign In",
+         forgot: "Forgot Password?",
+         newToNet: "New to Netflix",
+         already: "Already registered",
+         signUpNow: "Sign Up Now",
+         signInNow: "Sign In Now",
+         learn: "Learn more",
+      },
+   },
+   hi: {
+      search: "खोज",
+      placeholder: "आज आप क्या खोजना चाहेंगे?",
+      login: {
+         name: "पूरा नाम",
+         email: "मेल पता",
+         password: "पासवर्ड",
+         signUp: "साइन अप करें",
+         signIn: "दाखिल करना",
+         forgot: "पासवर्ड भूल गए?",
+         newToNet: "नेटफ्लिक्स पर नया",
+         already: "पहले से ही पंजीकृत",
+         signUpNow: "अभी साइनअप करें",
+         signInNow: "अब साइन इन करो",
+         learn: "और अधिक जानें",
+      },
+   },
+   es: {
+      search: "buscar",
+      placeholder: "¿Qué te gustaría buscar hoy?",
+      login: {
+         name: "Nombre completo",
+         email: "Dirección de correo electrónico",
+         password: "Contraseña",
+         signUp: "Inscribirse",
+         signIn: "Iniciar sesión",
+         forgot: "¿Has olvidado tu contraseña?",
+         newToNet: "Nuevo en Netflix",
+         already: "Ya registrado",
+         signUpNow: "Regístrate ahora",
+         signInNow: "Iniciar sesión ahora",
+         learn: "Aprende más",
+      },
+   },
+};
+
+export default lang;
