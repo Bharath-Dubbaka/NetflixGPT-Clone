@@ -14,7 +14,7 @@ const GptBody = () => {
                alt="bgImgLogin"
             />
          </div>
-         <div className="flex flex-col pt-40 align-middle items-center backdrop-blur-sm relative min-h-screen">
+         <div className="flex flex-col pt-20 align-middle items-center backdrop-blur-sm  min-h-screen">
             <GptSearch />
             <GptSuggestions />
          </div>

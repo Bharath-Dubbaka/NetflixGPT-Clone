@@ -59,7 +59,7 @@ const GptSearch = () => {
    };
 
    return (
-      <div className="	bg-slate-800 py-4 rounded-lg  flex justify-center w-[90%] sm:w-[65%] md:w-[65%] z-20 ">
+      <div className="	bg-slate-800 py-2 rounded-lg  flex justify-center w-[90%] sm:w-[65%] md:w-[65%] z-20 ">
          {/* <form
             onSubmit={(e) => e.preventDefault()}
             className=" "

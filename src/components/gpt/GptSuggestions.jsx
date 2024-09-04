@@ -10,7 +10,7 @@ const GptSuggestions = () => {
    // add shimer later
    if (!searchBtnClicked) return null;
    return (
-      <div className=" text-white font-bold py-2 rounded-lg w-full flex flex-col sm:py-6 md:py8 z-30">
+      <div className=" text-white font-bold py-2 rounded-lg w-full flex flex-col sm:py-6 md:py-8 z-30 ">
          {searchBtnClicked && !(moviesNames == null) ? (
             moviesNames.map((movie, index) => (
                <MovieList

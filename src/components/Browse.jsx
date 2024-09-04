@@ -9,9 +9,11 @@ import useTopRatedMovies from "../hooks/useTopRatedMovies";
 import useUpcomingMovies from "../hooks/useUpcomingMovies";
 import GptBody from "./gpt/GptBody";
 import ShimmerBody from "./shimmerUI/ShimmerBrowse";
+import MovieModal from "./gpt/MovieModal";
 
 const Browse = () => {
    const toggledGptState = useSelector((store) => store?.gpt?.showGptSearch);
+   const isOpen = useSelector((store) => store.movies.modalOpen);
 
    useNowPlaying();
    usePopularMovies();
@@ -27,6 +29,11 @@ const Browse = () => {
             <div>
                <MoviesPlayingContainer />
                <MoviesCategoryContainer />
+            </div>
+         )}
+         {isOpen && (
+            <div className="fixed top-0 backdrop-blur-sm p-2 w-full h-full flex items-center justify-center z-50">
+               <MovieModal />
             </div>
          )}
       </div>
