@@ -1,14 +1,17 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { modalSet } from "../../utils/store/selectedMovieSlice";
+import { modalSet, setSelectedMovieData, playId } from "../../utils/store/selectedMovieSlice";
 import useHeroMovieTrailer from "../../hooks/useHeroMovieTrailer";
 import useSelectedMovie from "../../hooks/useSelectedMovie";
+
 
 const MovieModal = () => {
    const dispatch = useDispatch();
    const movieId = useSelector((store) => store.selectedMovie.id);
    const modalFn = () => {
       dispatch(modalSet());
+      dispatch(playId(null));
+      dispatch(setSelectedMovieData(null));
    };
 
    useSelectedMovie(movieId);
@@ -27,9 +30,9 @@ const MovieModal = () => {
                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; hardware=0; acceleration=0"
                      referrerPolicy="strict-origin-when-cross-origin"
                   ></iframe>
-                  <div className="flex justify-center p-0 border-t border-solid border-blueGray-200 rounded-b-lg">
+                  <div className="flex justify-center p-0 border-t border-solid rounded-b-lg">
                      <button
-                        className="text-red-500 background-transparent uppercase py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150  font-bold w-full"
+                        className="text-red-500  uppercase py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150  font-bold w-full hover:bg-gray-400"
                         type="button"
                         onClick={() => modalFn()}
                      >
