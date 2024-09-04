@@ -1,34 +1,39 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { modalSet } from "../../utils/store/selectedMovieSlice";
+import useHeroMovieTrailer from "../../hooks/useHeroMovieTrailer";
+import useSelectedMovie from "../../hooks/useSelectedMovie";
 
 const MovieModal = () => {
+   const dispatch = useDispatch();
+   const movieId = useSelector((store) => store.selectedMovie.id);
+   const modalFn = () => {
+      dispatch(modalSet());
+   };
+
+   useSelectedMovie(movieId);
+   const trailerKey = useSelector(
+      (state) => state?.selectedMovie?.resForSelectedId
+   );
+
    return (
       <div>
-         <div
-            className="absolute inset-0 z-50 flex items-center justify-center outline-none focus:outline-none"
-         >
-            <div className="relative w-auto mx-auto max-w-3xl">
-               <div className="border-0 rounded-lg shadow-lg flex flex-col w-full bg-white outline-none focus:outline-none">
+         <div className="absolute inset-0 z-50 flex items-center justify-center outline-none focus:outline-none">
+            <div className="relative w-auto mx-auto ">
+               <div className="border-0 rounded-lg shadow-lg flex flex-col bg-white outline-none focus:outline-none w-[55rem]">
                   <iframe
                      className="w-full aspect-video overflow-hidden rounded-t-lg"
-                     src={`https://www.youtube.com/embed/TAB_v6yBXIE?autoplay=1&mute=1&loop=1&modestbranding=1&autohide=1&showinfo=0&controls=0&rel=0`}
+                     src={`https://www.youtube.com/embed/${trailerKey}?autoplay=1&mute=0&loop=1&modestbranding=1&autohide=1&showinfo=0&controls=0&rel=0`}
                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; hardware=0; acceleration=0"
                      referrerPolicy="strict-origin-when-cross-origin"
                   ></iframe>
-                  <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b-lg">
+                  <div className="flex justify-center p-0 border-t border-solid border-blueGray-200 rounded-b-lg">
                      <button
-                        className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                        className="text-red-500 background-transparent uppercase py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150  font-bold w-full"
                         type="button"
-                        onClick={() => setShowModal(false)}
+                        onClick={() => modalFn()}
                      >
                         Close
-                     </button>
-                     <button
-                        className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                        type="button"
-                        onClick={() => setShowModal(false)}
-                     >
-                        Save Changes
                      </button>
                   </div>
                </div>

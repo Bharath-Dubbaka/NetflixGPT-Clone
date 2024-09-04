@@ -13,7 +13,7 @@ import MovieModal from "./gpt/MovieModal";
 
 const Browse = () => {
    const toggledGptState = useSelector((store) => store?.gpt?.showGptSearch);
-   const isOpen = useSelector((store) => store.movies.modalOpen);
+   const isOpen = useSelector((store) => store.selectedMovie.modalOpen);
 
    useNowPlaying();
    usePopularMovies();
