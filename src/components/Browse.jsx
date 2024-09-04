@@ -8,6 +8,7 @@ import usePopularMovies from "../hooks/usePopularMovies";
 import useTopRatedMovies from "../hooks/useTopRatedMovies";
 import useUpcomingMovies from "../hooks/useUpcomingMovies";
 import GptBody from "./gpt/GptBody";
+import ShimmerBody from "./shimmerUI/ShimmerBrowse";
 
 const Browse = () => {
    const toggledGptState = useSelector((store) => store?.gpt?.showGptSearch);
@@ -16,6 +17,7 @@ const Browse = () => {
    usePopularMovies();
    useTopRatedMovies();
    useUpcomingMovies();
+
    return (
       <div className="bg-black">
          <Header />

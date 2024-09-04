@@ -5,10 +5,15 @@ const MovieList = ({ title, movies }) => {
    // console.log(movies, "moviesh");
 
    // //   add shimer later
-   // if(!movies) return
+   if (!movies) return null;
    return (
       <div className=" px-4 sm:px-6">
-         <div className="text-white font-semibold py-4 sm:text-2xl md:text-3xl">{title}</div>
+         <div
+            className="text-white font-semibold py-4 sm:text-2xl md:text-3xl"
+            style={{ filter: "drop-shadow(2px 4px 1.5px black)" }}
+         >
+            {title}
+         </div>
          <div className="flex  overflow-x-scroll">
             <div className="flex ">
                {movies?.map((movie) => (

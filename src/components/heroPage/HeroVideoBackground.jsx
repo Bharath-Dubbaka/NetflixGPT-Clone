@@ -9,7 +9,7 @@ const HeroVideoBackground = ({ id }) => {
    console.log(trailerKey);
 
    return (
-      <div className="bg_utube w-full h-full overflow-hidden">
+      <div className="bg_utube w-full h-full overflow-hidden pt-10 sm:pt-0 md:pt-0">
          <iframe
             className="w-full aspect-video overflow-hidden"
             src={`https://www.youtube.com/embed/${trailerKey}?autoplay=1&mute=1&loop=1&playlist=${trailerKey}&modestbranding=1&autohide=1&showinfo=0&controls=0&rel=0`}

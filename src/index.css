@@ -37,6 +37,7 @@
 
 @media (min-width: 640px) {
    .bg_utube {
+      margin-top: -10px;
       -webkit-user-select: none;
       user-select: none;
       width: 100%;

@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { MOVIE_OPTIONS, OPEN_AI_KEY } from "../../utils/constants";
 import { useDispatch } from "react-redux";
-import { getMovies } from "../../utils/store/gptSlice";
+import { getMovies, searchBtn } from "../../utils/store/gptSlice";
 
 const GptSearch = () => {
    let inputRef = useRef(null);
@@ -30,6 +30,7 @@ const GptSearch = () => {
       e.preventDefault();
       console.log("clicked", inputRef.current.value);
       // USING GEMINI AI
+      dispatch(searchBtn());
       async function run() {
          const textWithPrefix =
             "Act as a Movie Recommendation system and suggest 5 movies names only for the query : " +
@@ -58,7 +59,7 @@ const GptSearch = () => {
    };
 
    return (
-      <div className="	bg-slate-800 py-4 rounded-lg  flex justify-center w-[90%] sm:w-[65%] md:w-[65%]">
+      <div className="	bg-slate-800 py-4 rounded-lg  flex justify-center w-[90%] sm:w-[65%] md:w-[65%] z-20 ">
          {/* <form
             onSubmit={(e) => e.preventDefault()}
             className=" "
